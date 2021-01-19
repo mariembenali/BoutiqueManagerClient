@@ -138,7 +138,7 @@
 				</Label>
 				<JFXTextField fx:id="txtTotalCommande" editable="false"
 					focusColor="#4a148c" layoutX="581.0" layoutY="483.0"
-					prefHeight="26.0" prefWidth="190.0" text="0 CFA" />
+					prefHeight="26.0" prefWidth="190.0" text="0" />
 				<Separator layoutX="14.0" layoutY="213.0"
 					prefHeight="10.0" prefWidth="758.0" />
 				<JFXComboBox fx:id="cbxProduitComm" focusColor="#4a148c"

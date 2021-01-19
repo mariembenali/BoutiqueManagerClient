@@ -507,7 +507,7 @@ public class MainViewController {
 			}
 			actualiserCommListe(listeCommande);
 			int total = listeCommande.stream().filter(c -> c.getTotal() > 0).mapToInt(Detail::getTotal).sum();
-			txtTotalCommande.setText(total + " CFA");
+			txtTotalCommande.setText(total + "");
 
 		} else {
 			Utils.showMessage("", "", "Quantité non disponible en stock");
@@ -1285,7 +1285,7 @@ public class MainViewController {
 			foot.add(Chunk.TABBING);
 			foot.add(String.valueOf(c.getMontant()));
 
-			foot.add(" CFA\n\n");
+			foot.add("\n\n");
 			Font ft = new Font(Font.FontFamily.TIMES_ROMAN, 14f, Font.UNDERLINE);
 			ft.setStyle(Font.BOLDITALIC);
 			Paragraph sign = new Paragraph("Le Vendeur", ft);
@@ -1383,7 +1383,7 @@ public class MainViewController {
 			foot.add(Chunk.TABBING);
 			foot.add(String.valueOf(f.getCommande().getMontant()));
 
-			foot.add(" CFA\n\n");
+			foot.add("\n\n");
 
 			Font ft = new Font(Font.FontFamily.TIMES_ROMAN, 14f, Font.UNDERLINE);
 			ft.setStyle(Font.BOLDITALIC);
@@ -1400,7 +1400,7 @@ public class MainViewController {
 				foot1.setTabSettings(new TabSettings(350f));
 				foot1.add(Chunk.TABBING);
 				foot1.add(String.valueOf(f.getCommande().getAcompte()));
-				foot1.add(" CFA\n\n");
+				foot1.add("\n\n");
 				ct.addElement(foot1);
 			} else if (f.getClient().getType().getLibelle().equals("Entreprise") && f.getCommande().getEtat() == 1) {
 				Paragraph foot1 = new Paragraph("Montant Perçu :",
@@ -1408,7 +1408,7 @@ public class MainViewController {
 				foot1.setTabSettings(new TabSettings(350f));
 				foot1.add(Chunk.TABBING);
 				foot1.add(String.valueOf(f.getCommande().getMontant() - f.getCommande().getAcompte()));
-				foot1.add(" CFA\n\n");
+				foot1.add("\n\n");
 				ct.addElement(foot1);
 			}
 			ct.addElement(sign);
