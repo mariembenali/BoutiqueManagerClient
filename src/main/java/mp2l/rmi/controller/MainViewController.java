@@ -677,7 +677,7 @@ public class MainViewController {
 				commande.setDateLivraison(asDate(LocalDate.now()));
 
 			commande.setMontant(Integer.parseInt(txtTotalCommande.getText()));
-
+ 
 			if (client.getType().getLibelle().equals("Particulier"))
 				commande.setAcompte(0);
 			else
@@ -829,6 +829,15 @@ public class MainViewController {
 
 	@FXML
 	public void update_produit(ActionEvent actionEvent) throws Exception {
+		txtMarge.setDisable(false);
+		txtPrixProduit.setDisable(false);
+		txtQuantite.setDisable(false);
+		txtLibelleProduit.setDisable(false);
+		txtQuantiteSeuil.setDisable(false);
+		txtQuantiteAppro.setVisible(false);
+		txtNumProd.setDisable(false);
+		cbxMarque.setDisable(false);
+		cbxCategorie.setDisable(false);
 		cbxCategorie.setItems(FXCollections.observableArrayList(Fabrique.getiParametre().getAllCategorie()));
 		cbxMarque.setItems(FXCollections.observableArrayList(Fabrique.getiParametre().getAllMarque()));
 		produit = produitTable.getSelectionModel().getSelectedItem();
@@ -857,6 +866,7 @@ public class MainViewController {
 	@FXML
 	void modifier_produit(ActionEvent event) {
 		if (produit != null) {
+			produit.setNumSerie(txtNumProd.getText());
 			produit.setLibelle(txtLibelleProduit.getText());
 			produit.setPrixUnitaire(Integer.parseInt(txtPrixProduit.getText()));
 			produit.setQuantite(Integer.parseInt(txtQuantite.getText()));
@@ -1015,7 +1025,7 @@ public class MainViewController {
 		});
 
 		cbxCategorie.getSelectionModel().selectedItemProperty().addListener((option, oldValue, newValue) -> {
-			if (newValue != oldValue) {
+			if (newValue != oldValue && newValue!=null && oldValue!=null) {
 				try {
 					cbxMarque.setItems(FXCollections.observableArrayList(newValue.getMarques()));
 				} catch (Exception e) {
